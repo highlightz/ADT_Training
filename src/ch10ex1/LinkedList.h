@@ -27,5 +27,14 @@ public:
 	~LinkedList( );
 	LinkedList< DataType >& operator =( const LinkedList< DataType >& rlist );
 
-
+	void insert( const DataType& element );  // No current position after use
+	bool first( DataType& listEl );  // Returns first element of list in listEl,
+	                                 // and current position is set to this element;
+	                                 // if list is empty, returns false and there is 
+	                                 // no current position; otherwise, returns true.
+ 
+private:
+	Node< DataType >* start;
+	Node< DataType >* current;  // Points to node at current position
+	inline void deepCopy( const LinkedList< DataType >& original );
 };
