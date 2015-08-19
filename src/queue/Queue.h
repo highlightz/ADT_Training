@@ -66,4 +66,30 @@ Queue< DataType >& Queue< DataType >::operator =( const Queue< DataType >& rqueu
   return *this;
 }
 
+template < class DataType >
+void Queue< DataType >::enqueue( const DataType& element )
+{
+  Node< DataType >* ptr = new Node< DataType >;
+  ptr->info = element;
+  back->next = ptr;
+  back = ptr;
+}
+
+template < class DataType >
+bool Queue< DataType >::dequeue( DataType& deqElem )
+{
+  if ( front == back )
+    return false;
+ 
+  Node< DataType >* ptr = front->next; 
+  deqElem = ptr->info;
+  front->next = ptr->next;
+  if ( back == ptr )
+    back = front;
+    
+  delete ptr;
+  
+  return true;
+}
+
 #endif
