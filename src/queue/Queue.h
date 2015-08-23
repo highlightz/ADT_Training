@@ -118,4 +118,21 @@ void Queue< DataType >::makeEmpty( )
   }
 }
 
+template < class DataType >
+inline void Queue< DataType >::deepCopy( const Queue< DataType >& original )
+{
+  Node< DataType >* cpyptr = front = &header;
+  Node< DataType >* originalptr = original.front;
+  
+  while ( originalptr != original.back )
+  {
+    originalptr = originalptr->next;
+    cpyptr->next = new Node< DataType >;
+    cpyptr = cpyptr->next;
+    cpyptr->info = original->info;
+  }
+  
+  back = cpyptr;
+}
+
 #endif
