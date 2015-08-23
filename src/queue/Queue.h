@@ -92,4 +92,30 @@ bool Queue< DataType >::dequeue( DataType& deqElem )
   return true;
 }
 
+template < class DataType >
+bool Queue< DataType >::peek( DataType& frontElem )
+{
+  if ( front == back )
+    return false;
+  
+  frontElem = front->next->info;
+  return true;
+}
+
+template < class DataType >
+bool Queue< DataType >::isEmpty( ) const
+{
+  return front == back;
+}
+
+template < class DataType >
+void Queue< DataType >::makeEmpty( )
+{
+  DataType temp;
+  while ( dequeue( temp ) )
+  {
+    ;
+  }
+}
+
 #endif
